@@ -68,8 +68,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="About.aspx" />
+    <Content Include="admin\Admin_index.aspx" />
+    <Content Include="admin\Admin_logout.aspx" />
+    <Content Include="admin\Login_form.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Default.aspx" />
+    <Content Include="dist\sweetalert2.all.js" />
+    <Content Include="dist\sweetalert2.all.min.js" />
+    <Content Include="dist\sweetalert2.css" />
+    <Content Include="dist\sweetalert2.esm.all.js" />
+    <Content Include="dist\sweetalert2.esm.all.min.js" />
+    <Content Include="dist\sweetalert2.esm.js" />
+    <Content Include="dist\sweetalert2.esm.min.js" />
+    <Content Include="dist\sweetalert2.js" />
+    <Content Include="dist\sweetalert2.min.css" />
+    <Content Include="dist\sweetalert2.min.js" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -80,6 +93,34 @@
     </Compile>
     <Compile Include="About.aspx.designer.cs">
       <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Admin_dashboard.Master.cs">
+      <DependentUpon>Admin_dashboard.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Admin_dashboard.Master.designer.cs">
+      <DependentUpon>Admin_dashboard.Master</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Admin_index.aspx.cs">
+      <DependentUpon>Admin_index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Admin_index.aspx.designer.cs">
+      <DependentUpon>Admin_index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Admin_logout.aspx.cs">
+      <DependentUpon>Admin_logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Admin_logout.aspx.designer.cs">
+      <DependentUpon>Admin_logout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\Login_form.aspx.cs">
+      <DependentUpon>Login_form.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\Login_form.aspx.designer.cs">
+      <DependentUpon>Login_form.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
@@ -108,6 +149,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="admin\Admin_dashboard.Master" />
     <None Include="packages.config" />
     <Content Include="TMS_Site.Master" />
     <None Include="Web.Debug.config">

@@ -1,7 +1,26 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/TMS_Site.Master" AutoEventWireup="true" CodeBehind="Contact.aspx.cs" Inherits="TMS_project.Contact" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+    <script type="text/javascript">
+        function successcontent() {
+            Swal.fire({
+                title: "Success!",
+                text: "Data has been Inserted!",
+                icon: "success"
+            });
+        }
+        function Errorcontent() {
+            Swal.fire({
+                icon: "error",
+                title: "Faliure",
+                text: "Data insertion Failed!"              
+            });
+        }
+    </script>
+
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <!-- Page Title -->
@@ -60,46 +79,44 @@
                 </div>
 
                 <div class="col-lg-6">
-                    <form action="forms" class="php-email-form" data-aos="fade-up" data-aos-delay="500">
-                        <div class="row gy-4">
+                    <div class="row gy-4">
 
-                            <div class="col-md-6">
-                                <asp:TextBox ID="NameTextBox" class="form-control" runat="server" placeholder="Your Name"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator1" SetFocusOnError="true" Display="Dynamic" ControlToValidate="NameTextBox" ForeColor="Red" runat="server" ErrorMessage="Name Required"></asp:RequiredFieldValidator>
-                            </div>
+                        <div class="col-md-6">
+                            <asp:TextBox ID="NameTextBox" class="form-control" runat="server" placeholder="Your Name"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" SetFocusOnError="true" Display="Dynamic" ControlToValidate="NameTextBox" ForeColor="Red" runat="server" ErrorMessage="Name Required"></asp:RequiredFieldValidator>
+                        </div>
 
-                            <div class="col-md-6 ">
-                                <asp:TextBox ID="EmailTextBox" class="form-control" runat="server" placeholder="Your Email"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator2" SetFocusOnError="true" Display="Dynamic" ControlToValidate="EmailTextBox" ForeColor="Red" runat="server" ErrorMessage="Email Required"></asp:RequiredFieldValidator>
-                                <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" SetFocusOnError="true" ForeColor="Red" Display="Dynamic" ControlToValidate="EmailTextBox" ErrorMessage="Invalid Email" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
-                            </div>
+                        <div class="col-md-6 ">
+                            <asp:TextBox ID="EmailTextBox" class="form-control" runat="server" placeholder="Your Email"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" SetFocusOnError="true" Display="Dynamic" ControlToValidate="EmailTextBox" ForeColor="Red" runat="server" ErrorMessage="Email Required"></asp:RequiredFieldValidator>
+                            <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server" SetFocusOnError="true" ForeColor="Red" Display="Dynamic" ControlToValidate="EmailTextBox" ErrorMessage="Invalid Email" ValidationExpression="\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*"></asp:RegularExpressionValidator>
+                        </div>
 
-                            <div class="col-md-12">
-                                <%-- <asp:TextBox ID="subjectTextBox" class="form-control" runat="server" placeholder="Subject"></asp:TextBox>--%>
-                                <asp:DropDownList ID="subjectDropDownList" class="form-control" runat="server">
-                                    <asp:ListItem>select</asp:ListItem>
-                                    <asp:ListItem>Suggestion</asp:ListItem>
-                                    <asp:ListItem>Feedback</asp:ListItem>
-                                    <asp:ListItem>Complain</asp:ListItem>
-                                </asp:DropDownList>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator3" InitialValue="select" SetFocusOnError="true" Display="Dynamic" ControlToValidate="subjectDropDownList" ForeColor="Red" runat="server" ErrorMessage="Subject Required"></asp:RequiredFieldValidator>
-
-                            </div>
-
-                            <div class="col-md-12">
-                                <asp:TextBox ID="messageTextArea" TextMode="MultiLine" class="form-control" runat="server" name="message" Columns="50" Rows="5" placeholder="Message"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="RequiredFieldValidator4" SetFocusOnError="true" Display="Dynamic" ControlToValidate="messageTextArea" ForeColor="Red" runat="server" ErrorMessage="Message Required"></asp:RequiredFieldValidator>
-
-                            </div>
-
-                            <div class="col-md-12 text-center">
-
-                                <asp:Button CssClass="btn btn-info" ID="submitButton" runat="server" Text="Submit"  OnClick="submitButton_Click"/>
-
-                            </div>
+                        <div class="col-md-12">
+                            <%-- <asp:TextBox ID="subjectTextBox" class="form-control" runat="server" placeholder="Subject"></asp:TextBox>--%>
+                            <asp:DropDownList ID="subjectDropDownList" class="form-control" runat="server">
+                                <asp:ListItem>select</asp:ListItem>
+                                <asp:ListItem>Suggestion</asp:ListItem>
+                                <asp:ListItem>Feedback</asp:ListItem>
+                                <asp:ListItem>Complain</asp:ListItem>
+                            </asp:DropDownList>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator3" InitialValue="select" SetFocusOnError="true" Display="Dynamic" ControlToValidate="subjectDropDownList" ForeColor="Red" runat="server" ErrorMessage="Subject Required"></asp:RequiredFieldValidator>
 
                         </div>
-                    </form>
+
+                        <div class="col-md-12">
+                            <asp:TextBox ID="messageTextArea" TextMode="MultiLine" class="form-control" runat="server" name="message" Columns="50" Rows="5" placeholder="Message"></asp:TextBox>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" SetFocusOnError="true" Display="Dynamic" ControlToValidate="messageTextArea" ForeColor="Red" runat="server" ErrorMessage="Message Required"></asp:RequiredFieldValidator>
+
+                        </div>
+
+                        <div class="col-md-12 text-center">
+
+                            <asp:Button CssClass="btn btn-info" ID="submitButton" runat="server" Text="Submit" OnClick="submitButton_Click" />
+
+                        </div>
+
+                    </div>
                 </div>
                 <!-- End Contact Form -->
 
