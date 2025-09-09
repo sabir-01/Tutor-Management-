@@ -1,13 +1,15 @@
 ﻿using System;
-using System.Data.SqlClient;
+using System.Collections.Generic;
 using System.Configuration;
+using System.Data.SqlClient;
 
-namespace TMS_project.admin
+
+namespace TMS_project
 {
-
-    public partial class Login_form : System.Web.UI.Page
+    public partial class Student_Login : System.Web.UI.Page
     {
-    string cs = ConfigurationManager.ConnectionStrings["dbcs"].ConnectionString;
+        string cs = ConfigurationManager.ConnectionStrings["dbcs"].ConnectionString;
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -20,19 +22,19 @@ namespace TMS_project.admin
         protected void btnLogin_Click(object sender, EventArgs e)
         {
             SqlConnection con = new SqlConnection(cs);
-            string querry = "select * from Login where username = @username and password = @password";
-            SqlCommand cmd = new SqlCommand(querry,con);           
+            string querry = "select * from student_signup where username = @username and password = @password";
+            SqlCommand cmd = new SqlCommand(querry, con);
             cmd.Parameters.AddWithValue("@username", txtUsername.Text);
             cmd.Parameters.AddWithValue("@password", txtPassword.Text);
             con.Open();
-            SqlDataReader dr = cmd.ExecuteReader(); 
-            if(dr.HasRows == true)
+            SqlDataReader dr = cmd.ExecuteReader();
+            if (dr.HasRows == true)
             {
                 //Response.Write("<script>alert('Login successful !!');</script>");
 
-                Session["admin_user"] = txtUsername.Text;
+                Session["student"] = txtUsername.Text;
 
-                Response.Redirect("Admin_index.aspx");
+                Response.Redirect("Student/Student_index.aspx");
                 resset();
             }
             else
@@ -41,8 +43,6 @@ namespace TMS_project.admin
                 ClientScript.RegisterStartupScript(this.GetType(), "alert", "Swal.fire({\r\n                title: \"Failure!\",\r\n                text: \"username or password incorrect!\",\r\n                icon: \"error\"\r\n            });", true);
                 resset();
             }
-
-
         }
     }
 }
