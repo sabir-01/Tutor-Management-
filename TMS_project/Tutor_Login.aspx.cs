@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 
 
 namespace TMS_project
 {
-    public partial class Student_Login : System.Web.UI.Page
+    public partial class Tutor_Login : System.Web.UI.Page
     {
         string cs = ConfigurationManager.ConnectionStrings["dbcs"].ConnectionString;
 
@@ -19,10 +18,11 @@ namespace TMS_project
             txtUsername.Text = "";
             txtPassword.Text = "";
         }
+
         protected void btnLogin_Click(object sender, EventArgs e)
         {
             SqlConnection con = new SqlConnection(cs);
-            string querry = "select * from student_signup where username = @username and password = @password";
+            string querry = "select * from tutor_signup where username = @username and password = @password";
             SqlCommand cmd = new SqlCommand(querry, con);
             cmd.Parameters.AddWithValue("@username", txtUsername.Text);
             cmd.Parameters.AddWithValue("@password", txtPassword.Text);
@@ -32,7 +32,8 @@ namespace TMS_project
             {
                 //Response.Write("<script>alert('Login successful !!');</script>");
 
-                Session["Tutor"] = txtUsername.Text;
+                Session["tutor"] = txtUsername.Text;
+
                 Response.Redirect("Tutor/Tutor_index.aspx");
                 resset();
             }

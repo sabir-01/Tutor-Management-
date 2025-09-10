@@ -6,17 +6,26 @@
 <head runat="server">
     <title></title>
     <asp:ContentPlaceHolder ID="head" runat="server">
-    
     </asp:ContentPlaceHolder>
+    <style>
+    li a.btn {
+    width: 100px;          
+    height: 40px;         
+    display: flex;        
+    align-items: center;  
+    justify-content: center; 
+    font-size: 14px;      
+    padding: 0;          
+}
+
+    </style>
     <!-- Favicons -->
     <link href="assets/img/favicon.png" rel="icon">
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
-
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com" rel="preconnect">
     <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-
     <!-- Vendor CSS Files -->
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -26,18 +35,17 @@
     <link href="dist/sweetalert2.min.css" rel="stylesheet" />
     <!-- Main CSS File -->
     <link href="assets/css/main.css" rel="stylesheet">
-
-        <script src="dist/sweetalert2.min.js"></script>
+    <script src="dist/sweetalert2.min.js"></script>
     <script src="dist/sweetalert2.all.min.js"></script>
 </head>
-<body >
-    <form id="form1" runat="server">
+<body class="sb-nav-fixed">
+    <form id="form1" runat="server" class="dark-background mb-4" style="background-color: #1E4356 !important">
 
         <header id="header" class="header d-flex align-items-center fixed-top">
             <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
                 <a href="Default.aspx" class="logo d-flex align-items-center">
-                    <h1 class="sitename">Moderna</h1>
+                    <h1 class="sitename">T-M-S</h1>
                 </a>
 
                 <nav id="navmenu" class="navmenu">
@@ -45,7 +53,7 @@
                         <li><a href="Default.aspx" class="active">Home</a></li>
                         <li><a href="About.aspx">About</a></li>
                         <li><a href="services.html">Services</a></li>
-                       
+
                         <li><a href="blog.html">Blog</a></li>
                         <li class="dropdown"><a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                             <ul>
@@ -65,17 +73,13 @@
                             </ul>
                         </li>
                         <li><a href="Contact.aspx">Contact</a></li>
-                        <li >
+                        <li>
                             <a href="student_Signup.aspx" class="btn btn-info mx-2">Signup
                             </a>
                         </li>
-                        <li >
-                            <a href="Student_Login.aspx" class="btn btn-info mx-2">Login
-                            </a>
+                        <li ">  
+                            <a href="Student_Login.aspx" class="btn btn-info mx-2">Login </a>
                         </li>
-
-
-
                     </ul>
                     <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
                 </nav>
@@ -83,11 +87,9 @@
             </div>
         </header>
 
-      
-        <main class="main">
 
+        <main class="main ">
             <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-            
             </asp:ContentPlaceHolder>
 
         </main>
@@ -100,13 +102,7 @@
                         <div class="col-lg-6">
                             <h4>Join Our Newsletter</h4>
                             <p>Subscribe to our newsletter and receive the latest news about our products and services!</p>
-                            <%--   <form action="forms/newsletter.php" method="post" class="php-email-form">
-                                <div class="newsletter-form">
-                                    <input type="email" name="email"><input type="submit" value="Subscribe"></div>
-                                <div class="loading">Loading</div>
-                                <div class="error-message"></div>
-                                <div class="sent-message">Your subscription request has been sent. Thank you!</div>
-                            </form>--%>
+
                         </div>
                     </div>
                 </div>
@@ -162,11 +158,7 @@
 
             <div class="container copyright text-center mt-4">
                 <p>© <span>Copyright</span> <strong class="px-1 sitename">Moderna</strong> <span>All Rights Reserved</span></p>
-                <div class="credits">
-                    <!-- All the links in the footer should remain intact. -->
-                    <!-- You can delete the links only if you've purchased the pro version. -->
-                    <!-- Licensing information: https://bootstrapmade.com/license/ -->
-                    <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
+                <div class="credits">               
                     Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
                 </div>
             </div>

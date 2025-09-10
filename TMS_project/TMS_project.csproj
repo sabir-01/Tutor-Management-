@@ -71,6 +71,7 @@
     <Content Include="admin\Admin_index.aspx" />
     <Content Include="admin\Admin_logout.aspx" />
     <Content Include="admin\Login_form.aspx" />
+    <Content Include="admin\View_Contact.aspx" />
     <Content Include="Contact.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="dist\sweetalert2.all.js" />
@@ -88,6 +89,10 @@
     <Content Include="Student\Student_logout.aspx" />
     <Content Include="Student_Login.aspx" />
     <Content Include="student_Signup.aspx" />
+    <Content Include="Tutor\Tutor_index.aspx" />
+    <Content Include="Tutor\Tutor_Logout.aspx" />
+    <Content Include="Tutor_Login.aspx" />
+    <Content Include="Tutor_Signup.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -125,6 +130,13 @@
     </Compile>
     <Compile Include="admin\Login_form.aspx.designer.cs">
       <DependentUpon>Login_form.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="admin\View_Contact.aspx.cs">
+      <DependentUpon>View_Contact.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="admin\View_Contact.aspx.designer.cs">
+      <DependentUpon>View_Contact.aspx</DependentUpon>
     </Compile>
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
@@ -186,12 +198,48 @@
     <Compile Include="TMS_Site.Master.designer.cs">
       <DependentUpon>TMS_Site.Master</DependentUpon>
     </Compile>
+    <Compile Include="Tutor\Tutor_Dashboard.Master.cs">
+      <DependentUpon>Tutor_Dashboard.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tutor\Tutor_Dashboard.Master.designer.cs">
+      <DependentUpon>Tutor_Dashboard.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Tutor\Tutor_index.aspx.cs">
+      <DependentUpon>Tutor_index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tutor\Tutor_index.aspx.designer.cs">
+      <DependentUpon>Tutor_index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tutor\Tutor_Logout.aspx.cs">
+      <DependentUpon>Tutor_Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tutor\Tutor_Logout.aspx.designer.cs">
+      <DependentUpon>Tutor_Logout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tutor_Login.aspx.cs">
+      <DependentUpon>Tutor_Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tutor_Login.aspx.designer.cs">
+      <DependentUpon>Tutor_Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tutor_Signup.aspx.cs">
+      <DependentUpon>Tutor_Signup.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tutor_Signup.aspx.designer.cs">
+      <DependentUpon>Tutor_Signup.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="admin\Admin_dashboard.Master" />
     <None Include="packages.config" />
     <Content Include="TMS_Site.Master" />
     <Content Include="Student\Student_dashboard.Master" />
+    <Content Include="Tutor\Tutor_Dashboard.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

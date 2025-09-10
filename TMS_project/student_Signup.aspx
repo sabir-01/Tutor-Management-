@@ -5,23 +5,26 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <br />
 
-    <div class="container py-4 mt-4">
-        <div class="card shadow p-4">
-            <h2 class="text-center mb-4  text-black">Student Signup</h2>
+    <div class="container py-4  mt-3">
+        <div class="card shadow mb-3 my-3 p-3">
+            <div class="bg-info mt-2 mb-2 p-3">
+                <h2 class="text-center mb-4 mt-4 text-black">Student Signup</h2>
+
+            </div>
 
             <div class="row g-3">
                 <!-- Name -->
                 <div class="col-md-4">
                     <asp:TextBox ID="txtName" runat="server" CssClass="form-control" placeholder="Enter Name"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="rfvName" runat="server" ControlToValidate="txtName"
-                        ErrorMessage="Name is required" CssClass="text-danger" Display="Dynamic" SetFocusOnError="true"  />
+                        ErrorMessage="Name is required" CssClass="text-danger" Display="Dynamic" SetFocusOnError="true" />
                 </div>
 
                 <!-- City -->
                 <div class="col-md-4">
                     <asp:TextBox ID="txtCity" runat="server" CssClass="form-control" placeholder="Enter City"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="rfvCity" runat="server" ControlToValidate="txtCity"
-                        ErrorMessage="City is required" CssClass="text-danger" Display="Dynamic"  SetFocusOnError="true"/>
+                        ErrorMessage="City is required" CssClass="text-danger" Display="Dynamic" SetFocusOnError="true" />
                 </div>
 
                 <!-- Contact Number -->
@@ -129,7 +132,7 @@
                 <div class="col-md-4">
                     <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" CssClass="form-control" placeholder="Enter Password"></asp:TextBox>
                     <asp:RequiredFieldValidator ID="rfvPassword" runat="server" ControlToValidate="txtPassword"
-                        ErrorMessage="Password is required" CssClass="text-danger" Display="Dynamic" SetFocusOnError="true"  />
+                        ErrorMessage="Password is required" CssClass="text-danger" Display="Dynamic" SetFocusOnError="true" />
                 </div>
 
                 <!-- Re-Enter Password -->
@@ -156,10 +159,17 @@
             </div>
 
             <!-- Submit -->
-            <div class="text-center mt-4">
-                <asp:Button ID="btnSignup" runat="server" Text="Sign Up" CssClass="btn btn-primary px-5 shadow"  OnClick="btnSignup_Click"/>
+            <div class="text-center mt-4 mb-3">
+                <asp:Button ID="btnSignup" runat="server" Text="Sign Up" CssClass="btn btn-primary px-5 shadow" OnClick="btnSignup_Click" />
             </div>
 
-            <br />
+            <div class="text-center mt-4 mb-3 col-md-12">
+                <a href="student_Signup.aspx" class="btn btn-success">Stduent Signup</a>
+                <a href="Tutor_Signup.aspx" class="btn   btn-success ">Tutor  Signup</a>
+
+            </div>
+        </div>
     </div>
+
+    <br />
 </asp:Content>
