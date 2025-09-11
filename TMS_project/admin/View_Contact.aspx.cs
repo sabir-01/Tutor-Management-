@@ -18,15 +18,14 @@ namespace TMS_project.admin
             if (Session["admin_user"] == null)
             {
                 Response.Redirect("Login_form.aspx");
-            }
+            } 
             if (!IsPostBack) { 
             BindGridview();
             
             }
 
         }
-
-        void BindGridview()
+void BindGridview()
         {
             SqlConnection con = new SqlConnection(cs);
             string querry = "select * from contact_tbl";
@@ -37,6 +36,7 @@ namespace TMS_project.admin
             GridView1.DataBind();   
 
         }
+        
 
         protected void GridView1_RowDeleting(object sender, System.Web.UI.WebControls.GridViewDeleteEventArgs e)
         {

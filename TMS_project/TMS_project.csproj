@@ -87,10 +87,12 @@
     <Content Include="Global.asax" />
     <Content Include="Student\Student_index.aspx" />
     <Content Include="Student\Student_logout.aspx" />
+    <Content Include="Student\View_Tutor.aspx" />
     <Content Include="Student_Login.aspx" />
     <Content Include="student_Signup.aspx" />
     <Content Include="Tutor\Tutor_index.aspx" />
     <Content Include="Tutor\Tutor_Logout.aspx" />
+    <Content Include="Tutor\View_student.aspx" />
     <Content Include="Tutor_Login.aspx" />
     <Content Include="Tutor_Signup.aspx" />
     <Content Include="Web.config" />
@@ -177,6 +179,13 @@
     <Compile Include="Student\Student_logout.aspx.designer.cs">
       <DependentUpon>Student_logout.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Student\View_Tutor.aspx.cs">
+      <DependentUpon>View_Tutor.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Student\View_Tutor.aspx.designer.cs">
+      <DependentUpon>View_Tutor.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Student_Login.aspx.cs">
       <DependentUpon>Student_Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -218,6 +227,13 @@
     </Compile>
     <Compile Include="Tutor\Tutor_Logout.aspx.designer.cs">
       <DependentUpon>Tutor_Logout.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Tutor\View_student.aspx.cs">
+      <DependentUpon>View_student.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Tutor\View_student.aspx.designer.cs">
+      <DependentUpon>View_student.aspx</DependentUpon>
     </Compile>
     <Compile Include="Tutor_Login.aspx.cs">
       <DependentUpon>Tutor_Login.aspx</DependentUpon>

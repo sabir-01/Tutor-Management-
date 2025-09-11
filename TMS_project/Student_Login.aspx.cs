@@ -32,8 +32,8 @@ namespace TMS_project
             {
                 //Response.Write("<script>alert('Login successful !!');</script>");
 
-                Session["Tutor"] = txtUsername.Text;
-                Response.Redirect("Tutor/Tutor_index.aspx");
+                Session["student"] = txtUsername.Text;
+                Response.Redirect("Student/Student_index.aspx");
                 resset();
             }
             else

@@ -3,8 +3,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-     <div class="container mt-3">
-     <div class="row justify-content-center mt-3">
+     <div class="container">
+     <div class="row justify-content-center">
          <div class="col-md-5 mt-4">
              <div class="card shadow-lg rounded-4 mt-5">
                  <div class="card-body p-5">
