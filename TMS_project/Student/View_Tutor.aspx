@@ -22,9 +22,9 @@
         </div>
 
     </div>
-   <br />
+    <br />
     <div class="row">
-        <asp:Repeater ID="Repeater1" runat="server">
+        <asp:Repeater ID="Repeater1" runat="server" OnItemCommand="Repeater1_ItemCommand">
 
             <ItemTemplate>
                 <div class="col-md-4">
@@ -66,6 +66,11 @@
                                 <br />
                                 <asp:Label ID="Label7" runat="server" Text='<%# Bind("degree") %>'></asp:Label>
                             </h4>
+                            <asp:Button ID="btnSendRequest" runat="server" Text="Send Request"
+                                CssClass="btn btn-primary btn-sm mt-2"
+                                CommandName="SendRequest" CommandArgument='<%# Eval("Tutor_id") %>' />
+
+
                         </div>
                     </div>
                     <br />

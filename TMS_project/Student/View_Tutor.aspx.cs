@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace TMS_project.Student
@@ -58,7 +59,7 @@ namespace TMS_project.Student
             DataTable data = new DataTable();
             sda.Fill(data);
 
-            if(data.Rows.Count > 0)
+            if (data.Rows.Count > 0)
             {
                 Repeater1.DataSource = data;
                 Repeater1.DataBind();
@@ -71,5 +72,49 @@ namespace TMS_project.Student
                 Repeater1.DataBind();
             }
         }
+        protected void Repeater1_ItemCommand(object source, RepeaterCommandEventArgs e)
+        {
+            if (e.CommandName == "SendRequest")
+            {
+                int tutorId = Convert.ToInt32(e.CommandArgument);
+                string studentUsername = Session["student"].ToString(); // must be set at login
+
+                using (SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["dbcs"].ConnectionString))
+                {
+                    string query = @"INSERT INTO Request (StudentUsername, Tutor_id, Status) 
+                             VALUES (@StudentUsername, @Tutor_id, @Status)";
+
+                    SqlCommand cmd = new SqlCommand(query, con);
+                    cmd.Parameters.AddWithValue("@StudentUsername", studentUsername);
+                    cmd.Parameters.AddWithValue("@Tutor_id", tutorId);
+                    cmd.Parameters.AddWithValue("@Status", "Pending");
+
+                    try
+                    {
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+
+                        ScriptManager.RegisterStartupScript(this, this.GetType(),
+                            "alert", "alert('Request Sent Successfully!');", true);
+                    }
+                    catch (SqlException ex)
+                    {
+                        if (ex.Number == 547) // FK violation
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(),
+                                "alert", $"alert('Error: Either Student ({studentUsername}) or Tutor ({tutorId}) does not exist.');", true);
+                        }
+                        else
+                        {
+                            ScriptManager.RegisterStartupScript(this, this.GetType(),
+                                "alert", "alert('An error occurred while sending the request. Please try again later.');", true);
+                        }
+                    }
+                }
+            }
+        }
+
     }
+
 }
+

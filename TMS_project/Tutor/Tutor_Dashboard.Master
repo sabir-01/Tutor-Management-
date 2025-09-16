@@ -96,9 +96,9 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 View Students
                             </a>
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="../Requests.aspx" >
                                 <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
-                                Tables
+                                    View Request
                             </a>
                         </div>
                     </div>

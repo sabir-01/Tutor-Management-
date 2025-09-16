@@ -112,6 +112,11 @@
                         <asp:ListItem>2 Year</asp:ListItem>
                         <asp:ListItem>3 Year</asp:ListItem>
                         <asp:ListItem>4 Year</asp:ListItem>
+                        <asp:ListItem>5 Year</asp:ListItem>
+                        <asp:ListItem>6 Year</asp:ListItem>
+                        <asp:ListItem>7 Year</asp:ListItem>
+                        <asp:ListItem>8 Year</asp:ListItem>
+                        <asp:ListItem>9 Year</asp:ListItem>
                         <asp:ListItem>Other</asp:ListItem>
                     </asp:DropDownList>
                     <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="ddlExperience"
