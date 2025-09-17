@@ -1,60 +1,378 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Student_dashboard.master.cs" Inherits="TMS_project.Student.Student_dashboard" %>
 
 <!DOCTYPE html>
-
 <html>
 <head runat="server">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Teacher Management System - Student Dashboard" />
+    <meta name="author" content="TMS Student" />
+    
     <title>Dashboard - Student</title>
-    <link href="~\Student\student_dasboard\css\styles.css" rel="stylesheet" />
+    
+    <!-- Enhanced CSS Libraries -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="~\Student\student_dasboard\css\styles.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-
+    
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
-</head>
-<body class="sb-nav-fixed">
+    
+    <!-- Enhanced Custom Styles -->
+    <style>
+        :root {
+            --student-primary-color: #4facfe;
+            --student-primary-dark: #00f2fe;
+            --student-secondary-color: #667eea;
+            --student-accent-color: #764ba2;
+            --student-success-color: #10b981;
+            --student-warning-color: #f59e0b;
+            --student-danger-color: #ef4444;
+            --student-dark-bg: #1e293b;
+            --student-darker-bg: #0f172a;
+            --student-light-text: #f8fafc;
+            --student-border-radius: 12px;
+            --student-shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --student-shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --student-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
+        * {
+            transition: var(--student-transition);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .dark-background {
+            background-color: #1E4356 !important;
+        }
+
+        /* Enhanced Navbar */
+        .sb-topnav {
+            background: linear-gradient(135deg, var(--student-dark-bg) 0%, var(--student-darker-bg) 100%) !important;
+            border: none;
+            box-shadow: var(--student-shadow-medium);
+            backdrop-filter: blur(10px);
+        }
+
+        .navbar-brand {
+            font-weight: 700 !important;
+            font-size: 1.5rem !important;
+            background: linear-gradient(45deg, var(--student-primary-color), var(--student-accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 2px;
+        }
+
+        .navbar-brand:hover {
+            transform: scale(1.05);
+        }
+
+        /* Enhanced Sidebar */
+        .sb-sidenav {
+            background: linear-gradient(180deg, var(--student-dark-bg) 0%, var(--student-darker-bg) 100%) !important;
+            box-shadow: var(--student-shadow-medium);
+            border-radius: 0 var(--student-border-radius) var(--student-border-radius) 0;
+        }
+
+        .sb-sidenav .nav-link {
+            border-radius: var(--student-border-radius);
+            margin: 4px 8px;
+            padding: 12px 16px;
+            color: #cbd5e1 !important;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sb-sidenav .nav-link:hover {
+            background: linear-gradient(135deg, var(--student-primary-color), var(--student-secondary-color)) !important;
+            color: white !important;
+            transform: translateX(8px);
+            box-shadow: var(--student-shadow-soft);
+        }
+
+        .sb-sidenav .nav-link:hover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1), transparent);
+            pointer-events: none;
+        }
+
+        .sb-sidenav .nav-link.active {
+            background: linear-gradient(135deg, var(--student-primary-color), var(--student-secondary-color)) !important;
+            color: white !important;
+            box-shadow: var(--student-shadow-soft);
+        }
+
+        .sb-nav-link-icon {
+            margin-right: 12px;
+            font-size: 1.1rem;
+        }
+
+        .sb-sidenav-menu-heading {
+            color: var(--student-accent-color) !important;
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 20px 16px 8px;
+        }
+
+        .sb-sidenav-footer {
+            background: linear-gradient(135deg, var(--student-darker-bg), var(--student-dark-bg)) !important;
+            border-radius: var(--student-border-radius);
+            margin: 16px;
+            padding: 16px;
+            text-align: center;
+            color: var(--student-light-text);
+        }
+
+        /* Enhanced Dropdown */
+        .dropdown-menu {
+            border: none;
+            border-radius: var(--student-border-radius);
+            box-shadow: var(--student-shadow-medium);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 8px;
+        }
+
+        .dropdown-item {
+            border-radius: 8px;
+            margin: 2px 0;
+            padding: 10px 16px;
+            font-weight: 500;
+        }
+
+        .dropdown-item:hover {
+            background: linear-gradient(135deg, var(--student-primary-color), var(--student-secondary-color));
+            color: white;
+            transform: translateX(4px);
+        }
+
+        /* Enhanced User Display */
+        .nav-link.dropdown-toggle {
+            background: rgba(255, 255, 255, 0.1) !important;
+            border-radius: 50px !important;
+            padding: 8px 16px !important;
+            font-weight: 500;
+        }
+
+        .nav-link.dropdown-toggle:hover {
+            background: rgba(255, 255, 255, 0.2) !important;
+            transform: scale(1.05);
+        }
+
+        /* Enhanced Content Area */
+        #layoutSidenav_content {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: var(--student-border-radius);
+            margin: 16px;
+            box-shadow: var(--student-shadow-soft);
+        }
+
+        .container-fluid {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: var(--student-border-radius);
+            padding: 24px;
+            margin: 16px 0;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Enhanced Footer */
+        footer {
+            background: linear-gradient(135deg, var(--student-dark-bg), var(--student-darker-bg)) !important;
+            border-radius: var(--student-border-radius) var(--student-border-radius) 0 0;
+            margin: 16px 16px 0;
+            color: var(--student-light-text);
+        }
+
+        footer a {
+            color: var(--student-accent-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        footer a:hover {
+            color: var(--student-primary-color);
+            text-decoration: underline;
+        }
+
+        /* Enhanced Buttons */
+        .btn {
+            border-radius: var(--student-border-radius);
+            font-weight: 500;
+            padding: 10px 20px;
+            border: none;
+            box-shadow: var(--student-shadow-soft);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--student-shadow-medium);
+        }
+
+        .btn-link {
+            color: var(--student-light-text) !important;
+        }
+
+        .btn-link:hover {
+            color: var(--student-accent-color) !important;
+            background: rgba(255, 255, 255, 0.1) !important;
+        }
+
+        /* Enhanced Collapse Arrow Animation */
+        .sb-sidenav-collapse-arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .nav-link[aria-expanded="true"] .sb-sidenav-collapse-arrow {
+            transform: rotate(180deg);
+        }
+
+        /* Responsive Enhancements */
+        @media (max-width: 768px) {
+            .navbar-brand {
+                font-size: 1.2rem !important;
+            }
+            
+            #layoutSidenav_content {
+                margin: 8px;
+            }
+            
+            .container-fluid {
+                padding: 16px;
+                margin: 8px 0;
+            }
+        }
+
+        /* Loading Animation */
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(45deg, var(--student-accent-color), var(--student-primary-color));
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Enhanced scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--student-dark-bg);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, var(--student-primary-color), var(--student-accent-color));
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, var(--student-primary-dark), var(--student-primary-color));
+        }
+    </style>
+</head>
+
+<body class="sb-nav-fixed">
     <form id="form1" runat="server">
 
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3 text-center mt-2" href="#">
-                <h2>T_M_S</h2>
+            <!-- Enhanced Navbar Brand-->
+            <a class="navbar-brand ps-3" href="#">
+                <i class="fas fa-user-graduate me-2"></i>Student Dashboard
             </a>
-            <!-- Sidebar Toggle-->
-            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
-
-            <!-- Navbar-->
-            <ul class="navbar-nav ms-auto  me-3 me-lg-4">
+            <!-- Enhanced Sidebar Toggle-->
+            <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!" title="Toggle Navigation">
+                <i class="fas fa-bars"></i>
+            </button>           
+            
+            <!-- Enhanced Navbar-->
+            <ul class="navbar-nav ms-auto me-3 me-lg-4">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i><% Response.Write(Session["student"]); %></a>
+                    <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" title="User Menu">
+                        <i class="fas fa-user-circle fa-fw me-2"></i>
+                        <% Response.Write(Session["student"] ?? "Student"); %>
+                    </a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="Student_logout.aspx">Logout</a></li>
+                        <li>
+                            <a class="dropdown-item" href="#">
+                                <i class="fas fa-user-circle me-2"></i>Profile
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">
+                                <i class="fas fa-cog me-2"></i>Settings
+                            </a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="#">
+                                <i class="fas fa-history me-2"></i>Activity Log
+                            </a>
+                        </li>
+                        <li><hr class="dropdown-divider" /></li>
+                        <li>
+                            <a class="dropdown-item" href="Student_logout.aspx">
+                                <i class="fas fa-sign-out-alt me-2"></i>Logout
+                            </a>
+                        </li>
                     </ul>
                 </li>
             </ul>
         </nav>
+
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                            <div class="sb-sidenav-menu-heading">
-                                <h2>Dashboard</h2>
-                            </div>
+                            <div class="sb-sidenav-menu-heading">Core</div>
+                            <a class="nav-link active" href="#">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                Dashboard
+                            </a>
+                            
                             <div class="sb-sidenav-menu-heading">Interface</div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
                                 Layouts
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
-                            <%--  <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                            <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="layout-static.html">Static Navigation</a>
-                                    <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
+                                    <a class="nav-link" href="#">Static Navigation</a>
+                                    <a class="nav-link" href="#">Light Sidenav</a>
                                 </nav>
-                            </div>--%>
+                            </div>
+                            
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                                 Pages
@@ -62,78 +380,152 @@
                             </a>
                             <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">Authentication
+                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+                                        <i class="fas fa-shield-alt me-2"></i>Authentication
                                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                     </a>
-
-                                    <%--  <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+                                    <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                         <nav class="sb-sidenav-menu-nested nav">
-                                           <a class="nav-link"  href="#">Login</a>
+                                            <a class="nav-link" href="#">Login</a>
                                             <a class="nav-link" href="#">Register</a>
-
                                         </nav>
-                                    </div>--%>
-
-                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">Error
+                                    </div>
+                                    <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseError" aria-expanded="false" aria-controls="pagesCollapseError">
+                                        <i class="fas fa-exclamation-triangle me-2"></i>Error
                                         <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                                     </a>
                                     <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
                                         <nav class="sb-sidenav-menu-nested nav">
-                                            <a class="nav-link" href="~/Student/500.html">401 Page</a>
+                                            <a class="nav-link" href="401.html">401 Page</a>
                                             <a class="nav-link" href="404.html">404 Page</a>
                                             <a class="nav-link" href="500.html">500 Page</a>
                                         </nav>
                                     </div>
                                 </nav>
                             </div>
-                            <div class="sb-sidenav-menu-heading">Pages</div>
+                            
+                            <div class="sb-sidenav-menu-heading">Academic</div>
                             <a class="nav-link" href="View_Tutor.aspx">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
-                                View Tutors 
+                                <div class="sb-nav-link-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+                                View Tutors
                             </a>
-                            <a class="nav-link" href="Status_check.aspx" runat="server">
-                                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
+                            <a class="nav-link" href="Status_check.aspx">
+                                <div class="sb-nav-link-icon"><i class="fas fa-clipboard-check"></i></div>
                                 Check Status
                             </a>
-
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">
                         <div class="small">Logged in as:</div>
-                        Start Bootstrap
+                        <strong>Student Portal</strong>
+                        <div class="small mt-2 text-muted">Learning Hub</div>
                     </div>
                 </nav>
             </div>
+
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
                         <h1 class="mt-4"></h1>
                         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                         </asp:ContentPlaceHolder>
-
                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2023</div>
+                            <div class="text-muted">
+                                <i class="fas fa-copyright me-1"></i>
+                                Copyright &copy; Teacher Management System 2025
+                            </div>
                             <div>
-                                <a href="#">Privacy Policy</a>
+                                <a href="#">
+                                    <i class="fas fa-shield-alt me-1"></i>Privacy Policy
+                                </a>
                                 &middot;
-                                <a href="#">Terms &amp; Conditions</a>
+                                <a href="#">
+                                    <i class="fas fa-file-contract me-1"></i>Terms &amp; Conditions
+                                </a>
                             </div>
                         </div>
                     </div>
                 </footer>
             </div>
         </div>
-
     </form>
 
+    <!-- Enhanced JavaScript Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
     <script src="student_dasboard\js\scripts.js"></script>
 
+    <!-- Enhanced Custom Scripts -->
+    <script>
+        // Enhanced sidebar toggle animation
+        document.addEventListener('DOMContentLoaded', function () {
+            const sidebarToggle = document.getElementById('sidebarToggle');
+            if (sidebarToggle) {
+                sidebarToggle.addEventListener('click', function () {
+                    document.body.classList.toggle('sb-sidenav-toggled');
+                });
+            }
+
+            // Add smooth scroll behavior to nav links
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function () {
+                    // Remove active class from all links
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    // Add active class to clicked link
+                    this.classList.add('active');
+                });
+            });
+
+            // Enhanced dropdown animations
+            const dropdowns = document.querySelectorAll('.dropdown-toggle');
+            dropdowns.forEach(dropdown => {
+                dropdown.addEventListener('click', function (e) {
+                    const menu = this.nextElementSibling;
+                    if (menu) {
+                        menu.style.transform = 'translateY(-10px)';
+                        menu.style.opacity = '0';
+                        setTimeout(() => {
+                            menu.style.transform = 'translateY(0)';
+                            menu.style.opacity = '1';
+                        }, 50);
+                    }
+                });
+            });
+
+            // Active navigation link based on current page
+            const currentPath = window.location.pathname;
+            const navLinks2 = document.querySelectorAll('.nav-link');
+
+            navLinks2.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href && currentPath.includes(href)) {
+                    // Remove active class from all links
+                    navLinks2.forEach(l => l.classList.remove('active'));
+                    // Add active class to current link
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Add loading state to nav links
+        function showLoading() {
+            const loader = document.createElement('div');
+            loader.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+            loader.style.position = 'fixed';
+            loader.style.top = '50%';
+            loader.style.left = '50%';
+            loader.style.transform = 'translate(-50%, -50%)';
+            loader.style.zIndex = '9999';
+            loader.style.color = 'var(--student-primary-color)';
+            loader.style.fontSize = '2rem';
+            document.body.appendChild(loader);
+        }
+    </script>
 </body>
-</html>
+</html> 
